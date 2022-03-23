@@ -8,8 +8,12 @@ start.addEventListener('click',
     function () {
         numToGuessGen(),
         showNumbers(),
-        setTimeout(removeNumbers, 2000),
-        setTimeout(numRequest, 2000)
+        setTimeout(function(){
+            removeNumbers(),
+            numRequest(),
+            showResults()
+        }, 2000)
+        
     }
 )
 
@@ -57,4 +61,16 @@ function numRequest() {
             guessed.push(gigi)
         }
     }
+}
+
+//NOTE Stampa dei risultati
+function showResults(){
+    let results = document.getElementById('results');
+    results.classList.remove('d-none');
+    let title = document.createElement('h2');
+    title.innerHTML = "Gioco finito!"
+    results.appendChild(title);
+    let score = document.createElement('p');
+    score.innerHTML = `Hai indovinato ${guessed.length} numeri!`;
+    results.appendChild(score);
 }
