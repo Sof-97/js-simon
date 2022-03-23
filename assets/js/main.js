@@ -1,14 +1,15 @@
 let numToGuess;
 let start = document.getElementById('start');
 let toGuess = document.getElementById('toGuess');
-
+let guessed = [];
 
 
 start.addEventListener('click',
     function () {
         numToGuessGen(),
         showNumbers(),
-        removeNumbers()
+        setTimeout(removeNumbers, 2000),
+        setTimeout(numRequest, 2000)
     }
 )
 
@@ -31,12 +32,29 @@ function numToGuessGen() {
 }
 
 //NOTE Stampavalori a schermo
-function showNumbers(){
+function showNumbers() {
     toGuess = '';
-    for(i=0; i<numToGuess.length; i++){
+    for (i = 0; i < numToGuess.length; i++) {
         let box = document.createElement('div');
         box.classList.add('numbers');
-        box.innerHTML= (`${(numToGuess[i])}`);
+        box.innerHTML = (`${(numToGuess[i])}`);
         document.getElementById('toGuess').appendChild(box);
+    }
+    start.classList.add('d-none');
+}
+
+//NOTE Rimozione numeri
+function removeNumbers() {
+    console.log("gigi")
+    document.getElementById('toGuess').innerHTML = '';
+}
+
+//NOTE Prompt richiesta numeri
+function numRequest() {
+    for (i = 0; i < 5; i++) {
+        let gigi = Number(prompt(`Quale numero ricordi?`));
+        if (numToGuess.includes(gigi)) {
+            guessed.push(gigi)
+        }
     }
 }
