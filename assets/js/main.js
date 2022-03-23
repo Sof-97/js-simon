@@ -73,4 +73,6 @@ function showResults(){
     let score = document.createElement('p');
     score.innerHTML = `Hai indovinato ${guessed.length} numeri!`;
     results.appendChild(score);
+    score.innerHTML = JSON.stringify(guessed);
+    results.appendChild(score);
 }
