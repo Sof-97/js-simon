@@ -12,7 +12,7 @@ start.addEventListener('click',
             removeNumbers(),
             numRequest(),
             showResults()
-        }, 2000)
+        }, 30000)
         
     }
 )
